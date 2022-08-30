@@ -1,6 +1,6 @@
 let container = document.querySelector(".quotes");
 let index = 0;
-let max = 5;
+let max = 8;
 
 function addData() {
   for (let i = 0; i < max; i++) {
