@@ -184,12 +184,12 @@ p {
   font-size: 1rem;
 }
 
-.invalid {
+/* .invalid {
   border-color: red;
 }
 #error {
   color: red;
-}
+} */
 .submit {
   padding: 0.75rem 4rem;
 }
