@@ -1,53 +1,57 @@
-let container = document.querySelector("ul");
-let form = document.querySelector("form");
-let inputTitle = document.querySelector(".title");
-let inputCategory = document.querySelector(".category");
-// let title = document.querySelector("h3");
+let ul = document.querySelector(".ul");
+let form = document.querySelector(".form");
 
-let area = "";
+let cardsData = JSON.parse(localStorage.getItem(`cards`)) || [];
 
-function addNotice() {
-  let list = document.createElement("li");
-  let h3 = document.createElement("h3");
-  h3.innerText = inputCategory.value;
-  let p = document.createElement("p");
-  p.innerText = inputTitle.value;
+form.addEventListener(`submit`, (e) => {
+  e.preventDefault();
 
-  list.append(h3, p);
-  container.append(list);
+  let title = event.target.elements.title.value;
+  let category = event.target.elements.category.value;
+  cardsData.push({ title, category });
+  localStorage.setItem(`cards`, JSON.stringify(cardsData));
+  createUI(cardsData, ul);
+});
 
-  //   h3.addEventListener("ondblclick", () => {
-  //     area = document.createElement("textarea");
-  //     area.value = this.innerHTML;
-  //   });
-  list.ondblclick = function () {
-    editStart();
-  };
-  function editStart() {
-    area = document.createElement("textarea");
-    area.className = "edit";
-    area.value = list.innerHTML;
+function handleEdit(event, info, i, label) {
+  let elm = event.target;
+  let input = document.createElement("input");
+  input.style.width = "140px";
+  input.style.backgroundColor = "rgb(233, 207, 207)";
 
-    area.onkeydown = function (event) {
-      if (event.key == "Enter") {
-        this.blur();
-      }
-    };
+  input.value = info;
+  input.addEventListener(`keyup`, (e) => {
+    if (e.keyCode === 13) {
+      let newVal = e.target.value;
+      cardsData[i][label] = newVal;
+      createUI();
+    }
+  });
 
-    area.onblur = function () {
-      editEnd();
-    };
-
-    list.replaceWith(area);
-    area.focus();
-  }
-  function editEnd() {
-    list.innerHTML = area.value;
-    area.replaceWith(list);
-  }
+  let parent = event.target.parentElement;
+  parent.replaceChild(input, elm);
 }
 
-form.addEventListener("submit", (e) => {
-  e.preventDefault();
-  addNotice();
-});
+function createUI(data = cardsData, root = ul) {
+  root.innerHTML = ``;
+  let fragment = new DocumentFragment();
+  data.forEach((cardsInfo, index) => {
+    let li = document.createElement("li");
+    let p = document.createElement("p");
+    p.addEventListener(`dblclick`, (event) =>
+      handleEdit(event, cardsInfo.title, index, "title")
+    );
+    p.innerText = cardsInfo.title;
+    let h3 = document.createElement("h3");
+    h3.innerText = cardsInfo.category;
+    h3.addEventListener(`dblclick`, (event) =>
+      handleEdit(event, cardsInfo.category, index, "category")
+    );
+    li.append(h3, p);
+
+    fragment.appendChild(li);
+  });
+  root.append(fragment);
+}
+
+createUI(cardsData, ul);

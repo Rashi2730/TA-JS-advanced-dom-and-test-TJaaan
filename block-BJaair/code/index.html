@@ -12,8 +12,8 @@
     <title>Cards</title>
   </head>
   <body class="flex">
-    <h1>NOTICE</h1>
-    <ul>
+    <h1>CARDS</h1>
+    <ul class="ul">
       <!-- <li>
         <h3>category</h3>
         <p>title</p>
@@ -27,18 +27,20 @@
         <p>title</p>
       </li> -->
     </ul>
-    <form class="form flex">
+    <form action="" class="form flex">
       <input
-        required
         type="text"
+        name="title"
         class="title"
-        placeholder="Enter title of the notice"
+        required
+        placeholder="Enter the title here"
       />
       <input
-        required
         type="text"
+        name="category"
         class="category"
-        placeholder="Notice category"
+        required
+        placeholder="Enter the category here"
       />
       <input type="submit" class="submit" />
     </form>
