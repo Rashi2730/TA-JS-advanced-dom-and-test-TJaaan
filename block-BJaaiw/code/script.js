@@ -1,7 +1,7 @@
 const canvas = document.getElementById("canvas");
 const ctx = canvas.getContext(`2d`);
 canvas.width = window.innerWidth * 0.37;
-canvas.height = window.innerHeight * 0.88;
+canvas.height = window.innerHeight * 0.85;
 
 //postn of ball to start
 let x = canvas.width / 2;
@@ -30,7 +30,7 @@ let row = 3;
 let column = 4;
 let brickWidth = 150;
 let brickHeight = 35;
-let brickPadding = 15;
+let brickPadding = 20;
 let brickOffsetTop = 30;
 let brickOffsetLeft = 30;
 
@@ -113,14 +113,14 @@ function breakBricks() {
 function calcScore() {
   ctx.font = "25px Ariel";
   ctx.fillStyle = "#BC8F8F";
-  ctx.fillText(`Score :` + score, 8, 20);
+  ctx.fillText(`Score :` + score, 8, 25);
 }
 
 //lives function
 function lifelines() {
   ctx.font = "25px Ariel";
   ctx.fillStyle = "#BC8F8F";
-  ctx.fillText(`Lives :` + lives, canvas.width - 120, 20);
+  ctx.fillText(`Lives :` + lives, canvas.width - 120, 25);
 }
 
 //draw bricks
