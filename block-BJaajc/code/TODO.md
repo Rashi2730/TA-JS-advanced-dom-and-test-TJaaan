@@ -12,7 +12,7 @@ Write the function in `index.js` file and also write the test in `index.test.js`
 
 3. Create 2 functions that calculate properties of a circle, using the definitions here.
 
-- Create a function called `getCircumfrence`:
+- Create a function called `getCircumference`:
 
 Pass the radius of a circle to the function and it returns the circumference based on the radius, and output `The circumference is NN`.
 

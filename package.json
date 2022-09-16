@@ -1,0 +1,23 @@
+{
+  "name": "ta-js-advanced-dom-and-test-tjaaan",
+  "version": "1.0.0",
+  "description": "TA-JS-advanced-dom-and-test-TJaaan",
+  "main": ".eslintrc.js",
+  "scripts": {
+    "test": "jest"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/Rashi2730/TA-JS-advanced-dom-and-test-TJaaan.git"
+  },
+  "keywords": [],
+  "author": "",
+  "license": "ISC",
+  "bugs": {
+    "url": "https://github.com/Rashi2730/TA-JS-advanced-dom-and-test-TJaaan/issues"
+  },
+  "homepage": "https://github.com/Rashi2730/TA-JS-advanced-dom-and-test-TJaaan#readme",
+  "devDependencies": {
+    "jest": "^29.0.3"
+  }
+}
